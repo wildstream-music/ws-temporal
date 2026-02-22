@@ -4,8 +4,7 @@ USER root
 
 # Install the Temporal UI server
 ENV TEMPORAL_UI_VERSION=2.31.2
-RUN apt-get update && apt-get install -y curl supervisor && \
-    rm -rf /var/lib/apt/lists/* && \
+RUN apk add --no-cache curl supervisor && \
     curl -L -o /tmp/ui-server.tar.gz \
     "https://github.com/temporalio/ui-server/releases/download/v${TEMPORAL_UI_VERSION}/ui-server_${TEMPORAL_UI_VERSION}_linux_amd64.tar.gz" && \
     mkdir -p /opt/temporal-ui && \
